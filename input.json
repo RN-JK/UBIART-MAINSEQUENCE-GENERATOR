@@ -1,0 +1,13 @@
+{
+    "HideUserInterfaceClip": {
+        "isActive": true,
+        "offset": 3
+    },
+    "VibrationClip": {
+        "isActive": true,
+        "duration": 12,
+        "path": "world/_common/hd_rumble/kickbig_01.vib",
+        "startOffset": 0
+    },
+    "Maps": [""]
+}
