@@ -1,5 +1,9 @@
 import json, random
 
+class TrackId:
+    hideuserinterface=random.randint(10000000, 99999999)
+    vibration=random.randint(10000000, 99999999)
+
 def readCKD(ckd):
     jsonbytes=open(ckd,'rb')
     bytedata=jsonbytes.read()
@@ -36,8 +40,8 @@ for map in setting['Maps']:
                 timeplusduration.append(clip['StartTime']+clip['Duration'])
             hideuioffset=setting['HideUserInterfaceClip']['offset']*24
             endduration=endbeat*24
-            tape['Clips'].append({"__class": "HideUserInterfaceClip","Id": random.randint(10000000, 99999999),"TrackId": random.randint(10000000, 99999999),"IsActive": 1,"StartTime": startbeat*24,"Duration": int(min(starttimes))-hideuioffset,"EventType": 18,"CustomParam": ""})
-            tape['Clips'].append({"__class": "HideUserInterfaceClip","Id": random.randint(10000000, 99999999),"TrackId": random.randint(10000000, 99999999),"IsActive": 1,"StartTime": max(timeplusduration)+hideuioffset,"Duration": endbeat*24,"EventType": 18,"CustomParam": ""})
+            tape['Clips'].append({"__class": "HideUserInterfaceClip","Id": random.randint(10000000, 99999999),"TrackId": TrackId.hideuserinterface,"IsActive": 1,"StartTime": startbeat*24,"Duration": int(min(starttimes))-hideuioffset,"EventType": 18,"CustomParam": ""})
+            tape['Clips'].append({"__class": "HideUserInterfaceClip","Id": random.randint(10000000, 99999999),"TrackId": TrackId.hideuserinterface,"IsActive": 1,"StartTime": max(timeplusduration)+hideuioffset,"Duration": endbeat*24,"EventType": 18,"CustomParam": ""})
             tape['Clips'][-1]['Duration']=endduration-tape['Clips'][-1]['StartTime']
 
     if setting['VibrationClip']['isActive']==True:
@@ -48,6 +52,6 @@ for map in setting['Maps']:
                 if setting['VibrationClip']['startOffset']>=beat:
                     continue
                 else:
-                    tape['Clips'].append({"__class": "VibrationClip","Id": random.randint(10000000, 99999999),"TrackId": random.randint(10000000, 99999999),"IsActive": 1,"StartTime": beat*24,"Duration": setting['VibrationClip']['duration'],"VibrationFilePath": setting['VibrationClip']['path'],"Loop": 0,"DeviceSide": 0,"PlayerId": -1,"Context": 0,"StartTimeOffset": 0,"Modulation": 0.5})
+                    tape['Clips'].append({"__class": "VibrationClip","Id": random.randint(10000000, 99999999),"TrackId": TrackId.vibration,"IsActive": 1,"StartTime": beat*24,"Duration": setting['VibrationClip']['duration'],"VibrationFilePath": setting['VibrationClip']['path'],"Loop": 0,"DeviceSide": 0,"PlayerId": -1,"Context": 0,"StartTimeOffset": 0,"Modulation": 0.5})
 
     json.dump(tape,open('output/'+map.lower()+'_mainsequence.tape.ckd','w'))
