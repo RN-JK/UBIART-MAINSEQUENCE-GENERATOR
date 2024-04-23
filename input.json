@@ -1,4 +1,7 @@
 {
+    "Settings": {
+		"MapDirectories": true
+	},
     "HideUserInterfaceClip": {
         "isActive": true,
         "offset": 3
