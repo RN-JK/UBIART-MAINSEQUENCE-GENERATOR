@@ -12,5 +12,10 @@
         "path": "world/_common/hd_rumble/kickbig_01.vib",
         "startOffset": 0
     },
+    "SoundSetClip": {
+        "isActive": true,
+        "full": false,
+        "intro": true
+    },
     "Maps": [""]
 }
